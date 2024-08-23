@@ -5,7 +5,6 @@ import { thunkGetAllAlbums } from '../../redux/albums';
 
 const HomePage = () => {
 	const dispatch = useDispatch();
-
 	const albums = useSelector(state => state.albums);
 
 	useEffect(() => {

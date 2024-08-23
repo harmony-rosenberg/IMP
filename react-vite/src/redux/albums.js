@@ -2,7 +2,6 @@ const LOAD_ALL_ALBUMS = 'albums/loadAllAlbums'
 const LOAD_ALBUM_DETAILS = 'albums/loadDetails'
 const CREATE_ALBUM = 'albums/createAlbum'
 const UPDATE_ALBUM = 'albums/updateAlbum'
-const DELETE_ALBUM = 'albums/deleteAlbum'
 
 const loadAllAlbums = (payload) => ({
 	type: LOAD_ALL_ALBUMS,
@@ -21,11 +20,6 @@ const createAlbum = (payload) => ({
 
 const updateAlbum = (payload) => ({
 	type: UPDATE_ALBUM,
-	payload
-})
-
-const deleteAlbum = (payload) => ({
-	type: DELETE_ALBUM,
 	payload
 })
 
@@ -95,22 +89,7 @@ export const thunkUpdateAlbum = (album) => async (dispatch) => {
 	}
 }
 
-export const thunkDeleteAlbum = (album) => async (dispatch) => {
-	const res = await fetch(`/api/albums/${album.id}`, {
-		method: 'DELETE',
-		headers: { 'Content-Type': 'application/json' },
-	})
 
-	if (res.ok) {
-		const data = await res.json()
-
-		if (data.errors) {
-			return;
-		}
-
-		dispatch(deleteAlbum(data))
-	}
-}
 
 const initialState = {};
 
@@ -135,9 +114,6 @@ const albumReducer = (state = initialState, action) => {
 			const newState = {}
 			newState[action.payload.id] = action.payload.updatedAlbum
 			return {...state, ...newState}
-		}
-		case DELETE_ALBUM: {
-			return Object.values(state).filter(album => album.id !== action.album.id)
 		}
 		default:
 			return state
