@@ -17,6 +17,7 @@ def get_user_albums():
 	albums = Album.query.filter_by(user_id=current_user.id).all()
 	return jsonify([album.to_dict() for album in albums]), 200
 
+#create a new album
 @album_routes.route('', methods=['POST'])
 @login_required
 def create_album():
@@ -35,6 +36,7 @@ def create_album():
 
 	return jsonify(new_album.to_dict()), 201
 
+#update an existing album
 @album_routes.route('/<int:id>', methods=['PUT'])
 @login_required
 def update_album(id):
@@ -57,3 +59,10 @@ def update_album(id):
 	db.session.commit()
 
 	return jsonify(edit_album.to_dict())
+
+#get details for existing album
+@album_routes.route('/<int:id>', methods=['GET'])
+@login_required
+def get_album_details(id):
+	album = Album.query.get(id)
+	return jsonify([album.to_dict()])
