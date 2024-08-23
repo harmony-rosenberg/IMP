@@ -1,5 +1,6 @@
 const LOAD_ALL_ALBUMS = 'albums/loadAllAlbums'
 const CREATE_ALBUM = 'albums/createAlbum'
+const UPDATE_ALBUM = 'albums/updateAlbum'
 
 const loadAllAlbums = (payload) => ({
 	type: LOAD_ALL_ALBUMS,
@@ -11,13 +12,18 @@ const createAlbum = (payload) => ({
 	payload
 })
 
+const updateAlbum = (payload) => ({
+	type: UPDATE_ALBUM,
+	payload
+})
+
 export const thunkGetAllAlbums = () => async (dispatch) => {
 	const res = await fetch('/api/albums')
 
 	if (res.ok) {
 		const data = await res.json()
 
-		if(data.errors) {
+		if (data.errors) {
 			return;
 		}
 
@@ -42,7 +48,25 @@ export const thunkCreateAlbum = (album) => async (dispatch) => {
 		dispatch(createAlbum(data))
 		return data
 	}
+}
 
+export const thunkUpdateAlbum = (album) => async (dispatch) => {
+	const res = await fetch(`/api/albums/${album.id}`, {
+		method: 'PUT',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify(album)
+	})
+
+	if (res.ok) {
+		const data = await res.json()
+
+		if (data.errors) {
+			return;
+		}
+
+		dispatch(updateAlbum(data))
+		return data
+	}
 }
 
 const initialState = {};
@@ -59,6 +83,11 @@ const albumReducer = (state = initialState, action) => {
 		case CREATE_ALBUM: {
 			const newState = {}
 			newState[action.payload.id] = action.payload
+			return {...state, ...newState}
+		}
+		case UPDATE_ALBUM: {
+			const newState = {}
+			newState[action.payload.id] = action.payload.updatedAlbum
 			return {...state, ...newState}
 		}
 		default:
