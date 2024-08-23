@@ -66,3 +66,17 @@ def update_album(id):
 def get_album_details(id):
 	album = Album.query.get(id)
 	return jsonify([album.to_dict()])
+
+#delete an album
+@album_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_album(id):
+	dead_album = Album.query.get(id)
+
+	if dead_album is None:
+		return jsonify({'error': 'We could not find that album :/'})
+
+	db.session.delete(dead_album)
+	db.session.commit()
+
+	return jsonify({'message': 'we took care of that little problem for you'})
