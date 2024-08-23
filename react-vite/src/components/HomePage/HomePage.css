@@ -1,0 +1,14 @@
+.album-list {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 50px;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-page > h1 {
+	text-align: center;
+}

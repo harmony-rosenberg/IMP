@@ -30,11 +30,13 @@ const AlbumPage = () => {
 
 	return (
 		isLoaded ? (
-		<div>
+		<div className="album-details-container">
 			<h1>{selectedAlbum.album_title}</h1>
 			<img src={selectedAlbum.artwork} />
-			<button onClick={openDeleteAlbumModal}>DELETE</button>
-			<button onClick={openUpdateAlbumForm}>UPDATE</button>
+			<div className="manage-btns">
+			<button className="delete-btn btn" onClick={openDeleteAlbumModal}>DELETE</button>
+			<button className="update-btn btn" onClick={openUpdateAlbumForm}>UPDATE</button>
+			</div>
 		</div>
 		) : (
 			<h1>loading....fart</h1>

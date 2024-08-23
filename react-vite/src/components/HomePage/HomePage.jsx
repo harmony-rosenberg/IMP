@@ -2,6 +2,7 @@ import './HomePage.css';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetAllAlbums } from '../../redux/albums';
+import AlbumCard from '../AlbumCard/AlbumCard';
 
 const HomePage = () => {
 	const dispatch = useDispatch();
@@ -12,9 +13,12 @@ const HomePage = () => {
 	}, [dispatch])
 
 	return (
-		<div>{Object.values(albums).map((album) => (
-			<div key={album.id}>{album.album_title}</div>
-		))}</div>
+		<div className='home-page'>
+			<h1>WELCOME TO IMP</h1>
+			<div className='album-list'>{Object.values(albums).map((album) => (
+				<AlbumCard key={album.id} album={album}/>
+			))}</div>
+		</div>
 	)
 }
 
