@@ -10,8 +10,8 @@ class Album(db.Model):
 	album_title = db.Column(db.String(40), nullable=False)
 	credits = db.Column(db.String(255), nullable=True)
 	artwork = db.Column(db.String(255), nullable=False)
-	user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id'), ondelete='CASCADE'), nullable=False)
 
+	user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id'), ondelete='CASCADE'), nullable=False)
 	user = db.relationship('User', back_populates='albums')
 
 	def _repr_(self):
@@ -23,5 +23,8 @@ class Album(db.Model):
 			'album_title': self.album_title,
 			'credits': self.credits,
 			'artwork': self.artwork,
-			'user_id': self.user_id
+			'user_id': self.user_id,
+			'user': {
+				'username': self.user.username
+			}
 		}

@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
-from app.models import db, Album
+from app.models import db, Album, User
 from flask_login import login_required, current_user
+from sqlalchemy.orm import joinedload, Load
 
 album_routes = Blueprint('albums', __name__, url_prefix='/albums')
 

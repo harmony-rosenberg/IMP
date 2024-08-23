@@ -4,6 +4,8 @@ import './AlbumCard.css';
 const AlbumCard = ({album}) => {
 	const navigate = useNavigate()
 
+	console.log(album.user.username)
+
 	return (
 		<div className='card-container'>
 			<img onClick={() => navigate(`/albums/${album.id}`)} src={album.artwork} />
