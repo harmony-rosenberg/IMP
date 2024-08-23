@@ -10,7 +10,7 @@ const HomePage = () => {
 
 	useEffect(() => {
 		dispatch(thunkGetAllAlbums())
-	})
+	}, [dispatch])
 
 	return (
 		<div>{Object.values(albums).map((album) => (
