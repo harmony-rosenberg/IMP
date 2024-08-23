@@ -28,7 +28,7 @@ const UpdateAlbum = () => {
 			artwork: artwork || album.artwork
 		}
 		const updatedAlbum = dispatch(thunkUpdateAlbum(payload))
-		navigate('/') //will update to album page once created
+		navigate(`/albums/${albumId}`) //will update to album page once created
 		return updatedAlbum
 	}
 
