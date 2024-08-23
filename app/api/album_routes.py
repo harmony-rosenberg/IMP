@@ -34,3 +34,26 @@ def create_album():
 	db.session.commit()
 
 	return jsonify(new_album.to_dict()), 201
+
+@album_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def update_album(id):
+	edit_album = Album.query.get(id)
+
+	if edit_album is None:
+		return jsonify({'error': 'Sorry, bud. That album does not exist'})
+
+	album_title = request.json.get('albumTitle')
+	credits = request.json.get('credits')
+	artwork = request.json.get('artwork')
+
+	if album_title:
+		edit_album.album_title=album_title
+	if credits:
+		edit_album.credits=credits
+	if artwork:
+		edit_album.artwork=artwork
+
+	db.session.commit()
+
+	return jsonify(edit_album.to_dict())
