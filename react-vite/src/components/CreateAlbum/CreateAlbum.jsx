@@ -10,6 +10,8 @@ const CreateAlbum = () => {
 	const [albumTitle, setAlbumTitle] = useState('');
 	const [credits, setCredits] = useState('');
 	const [artwork, setArtwork] = useState('');
+	const [releaseDate, setReleaseDate] = useState('00/00/0000');
+	const [genre, setGenre] = useState('')
 	// const [errors, setErrors] = useState('');
 
 	const handleSubmit = (e) => {
@@ -18,7 +20,9 @@ const CreateAlbum = () => {
 		const newAlbum = {
 			albumTitle,
 			credits,
-			artwork
+			artwork,
+			releaseDate,
+			genre
 		}
 		dispatch(thunkCreateAlbum(newAlbum)) //will nav to album details
 		navigate('/')
@@ -34,6 +38,22 @@ const CreateAlbum = () => {
 				value={albumTitle}
 				onChange={(e) => setAlbumTitle(e.target.value)}
 				required
+				/>
+			</div>
+			<div>
+				<label>Release Date</label>
+				<input
+				type='text'
+				value={releaseDate}
+				onChange={(e) => setReleaseDate(e.target.value)}
+				/>
+			</div>
+			<div>
+				<label>Genre</label>
+				<input
+				type='text'
+				value={genre}
+				onChange={(e) => setGenre(e.target.value)}
 				/>
 			</div>
 			<div>

@@ -25,13 +25,15 @@ def create_album():
 	album_title = request.json.get('albumTitle')
 	credits = request.json.get('credits')
 	artwork = request.json.get('artwork')
+	release_date = request.json.get('releaseDate')
+	genre = request.json.get('genre')
 
 	if not album_title:
 		return jsonify({'error': 'Title is required'})
 	if not artwork:
 		return jsonify({'error': 'Artwork is required'})
 
-	new_album = Album(album_title=album_title, credits=credits, artwork=artwork, user_id=current_user.id)
+	new_album = Album(album_title=album_title, credits=credits, artwork=artwork, release_date=release_date, genre=genre, user_id=current_user.id)
 	db.session.add(new_album)
 	db.session.commit()
 

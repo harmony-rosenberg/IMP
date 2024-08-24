@@ -5,15 +5,33 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', email='demo@aa.io', password='password', bio='hey this is a test bio')
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password', bio='this is also a test bio')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+        username='Demo',
+        email='demo@aa.io',
+        password='password',
+        bio='hey this is a test bio',
+        artist_name='The Shit Kickers',
+        profile_picture='https://www.shutterstock.com/image-photo/cute-grey-british-shorthair-cat-600nw-2258972347.jpg'
+        )
+    demo_one = User(
+        username='HarmonyRosenberg',
+        email='harmony@aa.io',
+        password='password',
+        bio='this is also a test bio',
+        artist_name='Diet Tea Other Cola',
+        profile_picture='https://www.shutterstock.com/image-photo/cute-grey-british-shorthair-cat-600nw-2258972347.jpg'
+        )
+    demo_two = User(
+        username='Euronymous',
+        email='bobbie@aa.io',
+        password='password',
+        bio='hehehehahahahHAHAHAHAH',
+        artist_name="Mayhem",
+        profile_picture='https://www.shutterstock.com/image-photo/cute-grey-british-shorthair-cat-600nw-2258972347.jpg'
+        )
 
     db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    db.session.add(demo_one)
+    db.session.add(demo_two)
     db.session.commit()
 
 

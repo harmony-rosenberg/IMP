@@ -6,18 +6,21 @@ def seed_albums():
 		album_title="demo 1",
 		credits='harmony rosenberg',
 		artwork='https://www.shutterstock.com/image-photo/cute-grey-british-shorthair-cat-600nw-2258972347.jpg',
+		genre='Rap',
 		user_id=1
 	)
 	demo_album_2 = Album(
 		album_title="demo 2",
 		credits='diet tea other cola',
 		artwork='https://www.shutterstock.com/image-photo/cute-grey-british-shorthair-cat-600nw-2258972347.jpg',
+		genre='Rock',
 		user_id=2
 	)
 	demo_album_3 = Album(
 		album_title="demo 3",
 		credits='the scum monks',
 		artwork='https://www.shutterstock.com/image-photo/cute-grey-british-shorthair-cat-600nw-2258972347.jpg',
+		genre='MinceCore',
 		user_id=3
 	)
 

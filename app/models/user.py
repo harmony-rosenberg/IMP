@@ -14,9 +14,10 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     bio = db.Column(db.String(255), nullable=True)
-    albums = db.relationship('Album', back_populates='user', cascade='all')
+    artist_name = db.Column(db.String(40), nullable=False)
+    profile_picture = db.Column(db.String(255), nullable=True)
 
-    # album_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('albums.id'), ondelete='CASCADE'))
+    albums = db.relationship('Album', back_populates='user', cascade='all')
 
     @property
     def password(self):

@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from datetime import datetime
 
 class Album(db.Model):
 	__tablename__ = "albums"
@@ -10,6 +11,8 @@ class Album(db.Model):
 	album_title = db.Column(db.String(40), nullable=False)
 	credits = db.Column(db.String(255), nullable=True)
 	artwork = db.Column(db.String(255), nullable=False)
+	release_date = db.Column(db.String(255), nullable=True)
+	genre = db.Column(db.String(40), nullable=True)
 
 	user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id'), ondelete='CASCADE'), nullable=False)
 	user = db.relationship('User', back_populates='albums')
@@ -23,8 +26,11 @@ class Album(db.Model):
 			'album_title': self.album_title,
 			'credits': self.credits,
 			'artwork': self.artwork,
+			'release_date': self.release_date,
+			'genre': self.genre,
 			'user_id': self.user_id,
 			'user': {
-				'username': self.user.username
+				'artistName': self.user.artist_name,
+				'profilePic': self.user.profile_picture
 			}
 		}
