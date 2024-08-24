@@ -12,6 +12,8 @@ const UpdateAlbum = () => {
 	const [albumTitle, setAlbumTitle] = useState('');
 	const [credits, setCredits] = useState('');
 	const [artwork, setArtwork] = useState('');
+	const [releaseDate, setReleaseDate] = useState('00/00/0000');
+	const [genre, setGenre] = useState('')
 	// const [errors, setErrors] = useState('');
 
 	useEffect(() => {
@@ -25,7 +27,9 @@ const UpdateAlbum = () => {
 			id: albumId,
 			albumTitle: albumTitle || album.albumTitle,
 			credits: credits || album.credits,
-			artwork: artwork || album.artwork
+			artwork: artwork || album.artwork,
+			releaseDate: releaseDate || album.releaseDate,
+			genre: genre || album.genre
 		}
 		const updatedAlbum = dispatch(thunkUpdateAlbum(payload))
 		navigate(`/albums/${albumId}`) //will update to album page once created
@@ -41,6 +45,22 @@ const UpdateAlbum = () => {
 				type='text'
 				value={albumTitle}
 				onChange={(e) => setAlbumTitle(e.target.value)}
+				/>
+			</div>
+			<div>
+				<label>Release Date</label>
+				<input
+				type='text'
+				value={releaseDate}
+				onChange={(e) => setReleaseDate(e.target.value)}
+				/>
+			</div>
+			<div>
+				<label>Genre</label>
+				<input
+				type='text'
+				value={genre}
+				onChange={(e) => setGenre(e.target.value)}
 				/>
 			</div>
 			<div>
