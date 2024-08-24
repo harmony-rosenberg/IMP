@@ -4,7 +4,6 @@ import './AlbumCard.css';
 const AlbumCard = ({album}) => {
 	const navigate = useNavigate()
 
-	console.log(album.release_date)
 	const date = album.release_date.slice(7, 16)
 
 	return (

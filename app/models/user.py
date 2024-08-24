@@ -13,8 +13,8 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    bio = db.Column(db.String(255), nullable=True)
     artist_name = db.Column(db.String(40), nullable=False)
+    bio = db.Column(db.String(255), nullable=True)
     profile_picture = db.Column(db.String(255), nullable=True)
 
     albums = db.relationship('Album', back_populates='user', cascade='all')
@@ -35,5 +35,7 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'bio' : self.bio
+            'artistName': self.artist_name,
+            'bio' : self.bio,
+            'profilePicture': self.profile_picture
         }
