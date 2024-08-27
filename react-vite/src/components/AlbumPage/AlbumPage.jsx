@@ -63,8 +63,8 @@ const AlbumPage = () => {
 			<h2>say somethin</h2>
 		<div>
 			<textarea
-			rows={4}
-			cols={40}
+			rows={8}
+			cols={80}
 			value={body}
 			onChange={(e) => setBody(e.target.value)}
 			required
@@ -77,7 +77,7 @@ const AlbumPage = () => {
 					<div
 					className="comment"
 					key={comment.id}>
-						<div>{comment.user_id}</div>
+						<div className="comment-user">{comment.user.artistName} :</div>
 						{comment.body}
 						</div>
 				))}

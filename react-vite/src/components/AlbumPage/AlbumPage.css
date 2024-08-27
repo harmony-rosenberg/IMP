@@ -21,10 +21,20 @@
 	border: lightgreen 3px solid;
 }
 
+textarea {
+	resize: none
+}
+
 .comment {
 	list-style: none;
 	border: 5px black solid;
 	width: fit-content;
 	padding: 10px;
 	margin-top: 10px;
+}
+
+.comment-user {
+	font-size: 25px;
+	font-weight: bold;
+	padding-bottom: 10px;
 }
