@@ -6,7 +6,6 @@ import { thunkGetAlbumDetails } from "../../redux/albums";
 import { thunkCreateComment } from '../../redux/comments';
 import DeleteAlbum from "../DeleteAlbum/DeleteAlbum";
 import './AlbumPage.css';
-import CreateComment from "../CreateComment/CreateComment";
 
 const AlbumPage = () => {
 	const dispatch = useDispatch();
@@ -17,6 +16,12 @@ const AlbumPage = () => {
 	const albums = useSelector(state => state.albums)
 	const [isLoaded, setIsLoaded] = useState(false);
 	const selectedAlbum = Object.values(albums)[0]
+  const user = useSelector(state => state.session.user)
+	console.log('USER', user)
+
+	useEffect(() => {
+		dispatch(thunkGetAlbumDetails(albumId)).then(() => setIsLoaded(true))
+	}, [albumId, dispatch])
 
 	const openDeleteAlbumModal = () => {
 		setModalContent(<DeleteAlbum album={selectedAlbum}/>)
@@ -26,13 +31,8 @@ const AlbumPage = () => {
 		navigate(`/albums/${albumId}/edit`)
 	}
 
-	useEffect(() => {
-		dispatch(thunkGetAlbumDetails(albumId)).then(() => setIsLoaded(true))
-	}, [albumId, dispatch])
-
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		console.log('ALBUM ID', albumId)
 
 		const newComment = {
 			body,
@@ -43,7 +43,8 @@ const AlbumPage = () => {
 	}
 
 	return (
-		isLoaded ? (
+		isLoaded && user.id == selectedAlbum.user_id ?
+		(
 		<div className="album-details-container">
 			<h1>{selectedAlbum.album_title}</h1>
 			<img src={selectedAlbum.artwork} />
@@ -51,7 +52,14 @@ const AlbumPage = () => {
 			<button className="delete-btn btn" onClick={openDeleteAlbumModal}>DELETE</button>
 			<button className="update-btn btn" onClick={openUpdateAlbumForm}>UPDATE</button>
 			</div>
-			<form onSubmit={handleSubmit}>
+		</div>
+		) : isLoaded && selectedAlbum.user_id !== user.id ? (
+		<div className="album-details-container">
+		<h1>{selectedAlbum.album_title}</h1>
+		<img src={selectedAlbum.artwork} />
+		<div className="manage-btns">
+		</div>
+		<form onSubmit={handleSubmit}>
 			<h2>say somethin</h2>
 		<div>
 			<textarea
@@ -65,9 +73,8 @@ const AlbumPage = () => {
 		<button type='submit'>post!</button>
 			</form>
 		</div>
-		) : (
+		) :
 			<h1>loading....fart</h1>
-		)
 	)
 }
 

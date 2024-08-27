@@ -12,7 +12,6 @@ const CreateComment = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		console.log('ALBUM ID', albumId)
 
 		const newComment = {
 			body,
