@@ -33,6 +33,6 @@ def undo_albums():
 	if environment == "production":
 		db.session.execute(f"TRUNCATE table {SCHEMA}.albums RESTART IDENTITY CASCADE;")
 	else:
-		db.session.execute(text("DELETE FROM notebooks"))
+		db.session.execute(text("DELETE FROM comments"))
 
 	db.session.commit()

@@ -16,8 +16,9 @@ class User(db.Model, UserMixin):
     bio = db.Column(db.String(255), nullable=True)
     artist_name = db.Column(db.String(40), nullable=False)
     profile_picture = db.Column(db.String(255), nullable=True)
-
+    
     albums = db.relationship('Album', back_populates='user', cascade='all')
+    comments = db.relationship('Comment', back_populates='user', cascade='all')
 
     @property
     def password(self):
