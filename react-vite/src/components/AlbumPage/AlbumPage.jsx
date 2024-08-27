@@ -5,6 +5,7 @@ import { useModal } from "../../context/Modal";
 import { thunkGetAlbumDetails } from "../../redux/albums";
 import DeleteAlbum from "../DeleteAlbum/DeleteAlbum";
 import './AlbumPage.css';
+import CreateComment from "../CreateComment/CreateComment";
 
 const AlbumPage = () => {
 	const dispatch = useDispatch();
@@ -14,6 +15,10 @@ const AlbumPage = () => {
 	const albums = useSelector(state => state.albums)
 	const [isLoaded, setIsLoaded] = useState(false);
 	const selectedAlbum = Object.values(albums)[0]
+
+	const openCommentModal = () => {
+		setModalContent(<CreateComment />)
+	}
 
 	const openDeleteAlbumModal = () => {
 		setModalContent(<DeleteAlbum album={selectedAlbum}/>)
@@ -36,6 +41,7 @@ const AlbumPage = () => {
 			<div className="manage-btns">
 			<button className="delete-btn btn" onClick={openDeleteAlbumModal}>DELETE</button>
 			<button className="update-btn btn" onClick={openUpdateAlbumForm}>UPDATE</button>
+			<button className="comment-btn btn" onClick={openCommentModal}>leave a comment</button>
 			</div>
 		</div>
 		) : (

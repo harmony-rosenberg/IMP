@@ -16,11 +16,12 @@ def get_user_comments():
 @login_required
 def create_comment():
 	body = request.json.get('body')
+	album_id = request.json.get('album_id')
 
 	if not body:
 		return jsonify({'error': 'body is required!'})
 
-	new_comment = Comment(body=body, user_id=current_user.id)
+	new_comment = Comment(body=body, user_id=current_user.id, album_id=album_id)
 	db.session.add(new_comment)
 	db.session.commit()
 
