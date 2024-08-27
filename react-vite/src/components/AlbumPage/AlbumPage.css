@@ -20,3 +20,11 @@
 	color: green;
 	border: lightgreen 3px solid;
 }
+
+.comment {
+	list-style: none;
+	border: 5px black solid;
+	width: fit-content;
+	padding: 10px;
+	margin-top: 10px;
+}

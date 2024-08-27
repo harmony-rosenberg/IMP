@@ -25,4 +25,8 @@ class Comment(db.Model):
 			'body': self.body,
 			'album_id': self.album_id,
 			'user_id': self.user_id,
+			'user': {
+				'artistName': self.user.artist_name,
+				'profilePic': self.user.profile_picture
+			}
 		}

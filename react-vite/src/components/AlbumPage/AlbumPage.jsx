@@ -72,6 +72,16 @@ const AlbumPage = () => {
 		</div>
 		<button type='submit'>post!</button>
 			</form>
+			<div className="comments-container">
+				{Object.values(selectedAlbum.comments).map((comment) => (
+					<div
+					className="comment"
+					key={comment.id}>
+						<div>{comment.user_id}</div>
+						{comment.body}
+						</div>
+				))}
+			</div>
 		</div>
 		) :
 			<h1>loading....fart</h1>
