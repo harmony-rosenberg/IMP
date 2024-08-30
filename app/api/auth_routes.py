@@ -54,6 +54,9 @@ def sign_up():
         user = User(
             username=form.data['username'],
             email=form.data['email'],
+            artist_name=request.json.get('artistName'),
+            bio=request.json.get('bio'),
+            profile_picture=request.json.get('profilePicture'),
             password=form.data['password']
         )
         db.session.add(user)

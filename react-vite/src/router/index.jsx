@@ -2,6 +2,10 @@ import { createBrowserRouter } from 'react-router-dom';
 import LoginFormPage from '../components/LoginFormPage';
 import SignupFormPage from '../components/SignupFormPage';
 import Layout from './Layout';
+import HomePage from '../components/HomePage';
+import CreateAlbum from '../components/CreateAlbum/CreateAlbum';
+import UpdateAlbum from '../components/UpdateAlbum';
+import AlbumPage from '../components/AlbumPage/AlbumPage';
 
 export const router = createBrowserRouter([
   {
@@ -9,7 +13,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <h1>Welcome!</h1>,
+        element: <HomePage />,
       },
       {
         path: "login",
@@ -18,6 +22,18 @@ export const router = createBrowserRouter([
       {
         path: "signup",
         element: <SignupFormPage />,
+      },
+      {
+        path: "albums/:albumId",
+        element: <AlbumPage />
+      },
+      {
+        path: "albums/new",
+        element: <CreateAlbum />
+      },
+      {
+        path: "/albums/:albumId/edit",
+        element: <UpdateAlbum />
       },
     ],
   },

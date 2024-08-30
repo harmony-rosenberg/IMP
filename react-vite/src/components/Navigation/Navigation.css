@@ -1,3 +1,11 @@
 .profile-dropdown {
+  border: 2px black solid;
   position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-bar-main {
+  display: flex;
+  justify-content: flex-end;
 }

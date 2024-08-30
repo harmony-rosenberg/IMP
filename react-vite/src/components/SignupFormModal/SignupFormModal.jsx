@@ -8,6 +8,9 @@ function SignupFormModal() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
+  const [artistName, setArtistName] = useState("");
+  const [bio, setBio] = useState("");
+  const [profilePicture, setProfilePicture] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
@@ -28,6 +31,9 @@ function SignupFormModal() {
         email,
         username,
         password,
+        artistName,
+        bio,
+        profilePicture
       })
     );
 
@@ -39,10 +45,11 @@ function SignupFormModal() {
   };
 
   return (
-    <>
+    <div>
       <h1>Sign Up</h1>
       {errors.server && <p>{errors.server}</p>}
-      <form onSubmit={handleSubmit}>
+      <form className="sign-up-form" onSubmit={handleSubmit}>
+        <div>
         <label>
           Email
           <input
@@ -53,6 +60,8 @@ function SignupFormModal() {
           />
         </label>
         {errors.email && <p>{errors.email}</p>}
+        </div>
+        <div>
         <label>
           Username
           <input
@@ -63,6 +72,32 @@ function SignupFormModal() {
           />
         </label>
         {errors.username && <p>{errors.username}</p>}
+        </div>
+        <div>
+				<label>Artist Name</label>
+				<input
+				type='text'
+				value={artistName}
+				onChange={(e) => setArtistName(e.target.value)}
+				/>
+			</div>
+      <div>
+				<label>Biography</label>
+				<input
+				type='text'
+				value={bio}
+				onChange={(e) => setBio(e.target.value)}
+				/>
+			</div>
+      <div>
+				<label>Profile Picture</label>
+				<input
+				type='text'
+				value={profilePicture}
+				onChange={(e) => setProfilePicture(e.target.value)}
+				/>
+			</div>
+        <div>
         <label>
           Password
           <input
@@ -73,6 +108,8 @@ function SignupFormModal() {
           />
         </label>
         {errors.password && <p>{errors.password}</p>}
+        </div>
+        <div>
         <label>
           Confirm Password
           <input
@@ -83,9 +120,10 @@ function SignupFormModal() {
           />
         </label>
         {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+        </div>
         <button type="submit">Sign Up</button>
       </form>
-    </>
+    </div>
   );
 }
 

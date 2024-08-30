@@ -1,0 +1,19 @@
+.card-container > img {
+	height: 400px;
+	width: 400px;
+}
+
+.card-container > img:hover {
+	cursor: pointer;
+}
+
+.card-container {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+.date {
+	text-align: right;
+	font-weight: lighter;
+}
