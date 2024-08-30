@@ -14,7 +14,7 @@ class Album(db.Model):
 	release_date = db.Column(db.String(255), nullable=True)
 	genre = db.Column(db.String(40), nullable=True)
 
-	# user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id'), ondelete='CASCADE'), nullable=False)
+	user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id'), ondelete='CASCADE'), nullable=False)
 	user = db.relationship('User', back_populates='albums')
 
 	# comment_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('comments.id'), ondelete='CASCADE'), nullable=True)
