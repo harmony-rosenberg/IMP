@@ -17,7 +17,6 @@ const AlbumPage = () => {
 	const [isLoaded, setIsLoaded] = useState(false);
 	const selectedAlbum = Object.values(albums)[0]
   const user = useSelector(state => state.session.user)
-	console.log('USER', user)
 
 	useEffect(() => {
 		dispatch(thunkGetAlbumDetails(albumId)).then(() => setIsLoaded(true))
