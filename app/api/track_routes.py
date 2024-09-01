@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from app.models import db, Track, User
 from flask_login import login_required, current_user
-from aws_functionality import upload_file_to_s3, get_unique_filename
+from aws_functionality import (upload_file_to_s3, get_unique_filename)
 
 track_routes = Blueprint('tracks', __name__, url_prefix='/tracks')
 
