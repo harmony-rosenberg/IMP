@@ -5,6 +5,7 @@ from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
 from .models import db, User
+from .api.track_routes import track_routes
 from .api.album_routes import album_routes
 from .api.comment_routes import comment_routes
 from .api.user_routes import user_routes
@@ -32,6 +33,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(album_routes, url_prefix='/api/albums')
 app.register_blueprint(comment_routes, url_prefix='/api/comments')
+app.register_blueprint(track_routes, url_prefix='/api/tracks')
 db.init_app(app)
 Migrate(app, db)
 
