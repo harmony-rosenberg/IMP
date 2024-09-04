@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
 from .models import db, User
-from .api.track_routes import track_routes, aws_functionality
+from .api.track_routes import track_routes
 from .api.album_routes import album_routes
 from .api.comment_routes import comment_routes
 from .api.user_routes import user_routes
