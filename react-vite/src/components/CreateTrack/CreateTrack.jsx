@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from "react-redux";
 import { useParams, useNavigate } from 'react-router-dom';
 import { thunkCreateTrack } from '../../redux/tracks';
@@ -6,6 +6,7 @@ import { thunkCreateTrack } from '../../redux/tracks';
 const CreateTrack = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const albumId = useParams();
 	const [originalFilename, setOriginalFilename] = useState('')
 	const [trackTitle, setTrackTitle] = useState('')
 

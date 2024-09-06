@@ -30,6 +30,10 @@ const AlbumPage = () => {
 		navigate(`/albums/${albumId}/edit`)
 	}
 
+	const openTrackUpload = () => {
+		navigate(`/albums/${albumId}/tracks`)
+	}
+
 	const handleSubmit = (e) => {
 		e.preventDefault()
 
@@ -50,6 +54,7 @@ const AlbumPage = () => {
 			<div className="manage-btns">
 			<button className="delete-btn btn" onClick={openDeleteAlbumModal}>DELETE</button>
 			<button className="update-btn btn" onClick={openUpdateAlbumForm}>UPDATE</button>
+			<button className="upload-btn btn" onClick={openTrackUpload}>TRACKS</button>
 			</div>
 		</div>
 		) : isLoaded && selectedAlbum.user_id !== user.id ? (
