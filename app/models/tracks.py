@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class Track(db.Model):
-	__table__name__ = "tracks"
+	__tablename__ = "tracks"
 
 	if environment == "production":
 		__table_args__ = {'schema': SCHEMA}
@@ -10,6 +10,9 @@ class Track(db.Model):
 	original_filename = db.Column(db.Integer, nullable=False)
 	filename = db.Column(db.String(100), nullable=False)
 	track_title = db.Column(db.String(100), nullable=False)
+
+	album_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('albums.id'), ondelete='CASCADE'), nullable=False)
+	albums = db.relationship('Album', back_populates='tracks')
 
 	def _repr_(self):
 		return f'Album {self.track_title}'

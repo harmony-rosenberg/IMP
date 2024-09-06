@@ -17,8 +17,9 @@ class Album(db.Model):
 	user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id'), ondelete='CASCADE'), nullable=False)
 	user = db.relationship('User', back_populates='albums')
 
-	# comment_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('comments.id'), ondelete='CASCADE'), nullable=True)
 	comments = db.relationship('Comment', back_populates='albums')
+
+	tracks = db.relationship('Track', back_populates='albums')
 
 	def _repr_(self):
 		return f'Album {self.album_title}'
@@ -35,6 +36,9 @@ class Album(db.Model):
 			'user': {
 				'artistName': self.user.artist_name,
 				'profilePic': self.user.profile_picture
+			},
+			'tracks': {
+				track.id: track.to_dict() for track in self.tracks
 			},
 			'comments': {
 				comment.id: comment.to_dict() for comment in self.comments
