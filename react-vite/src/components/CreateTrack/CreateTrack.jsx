@@ -16,6 +16,7 @@ const CreateTrack = () => {
 		const formData = new FormData();
 		formData.append("originalFilename", originalFilename);
 		formData.append("trackTitle", trackTitle);
+		formData.append("albumId", albumId)
 		dispatch(thunkCreateTrack(formData))
 	}
 
