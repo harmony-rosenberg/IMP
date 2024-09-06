@@ -17,8 +17,9 @@ def upload_track():
 	filename = get_unique_filename(original_filename.filename)
 	original_filename.filename = filename
 	track_title = request.form.get('trackTitle')
-	album_id = request.json.get('albumId')
-
+	albumId = request.form.get('albumId')
+	print(albumId)
+	
 	if not original_filename:
 		return jsonify({'error': 'need that file, buddy'})
 	if not track_title:
@@ -26,8 +27,7 @@ def upload_track():
 
 	upload_file_to_s3(original_filename)
 
-	new_track = Track(original_filename=original_filename.filename, filename=filename, track_title=track_title, album_id=album_id)
-
+	new_track = Track(original_filename=original_filename.filename, filename=filename, track_title=track_title, album_id=albumId)
 
 	db.session.add(new_track)
 	db.session.commit()

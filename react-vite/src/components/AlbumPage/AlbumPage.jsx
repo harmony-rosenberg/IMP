@@ -6,6 +6,7 @@ import { thunkGetAlbumDetails } from "../../redux/albums";
 import { thunkCreateComment } from '../../redux/comments';
 import DeleteAlbum from "../DeleteAlbum/DeleteAlbum";
 import './AlbumPage.css';
+import trackReducer from "../../redux/tracks";
 
 const AlbumPage = () => {
 	const dispatch = useDispatch();
@@ -56,12 +57,18 @@ const AlbumPage = () => {
 			<button className="update-btn btn" onClick={openUpdateAlbumForm}>UPDATE</button>
 			<button className="upload-btn btn" onClick={openTrackUpload}>TRACKS</button>
 			</div>
+			<div className="track-list"> {Object.values(selectedAlbum.tracks).map((track) => (
+			<div key={track.id}>{track.track_title}</div>
+		))}
+		</div>
 		</div>
 		) : isLoaded && selectedAlbum.user_id !== user.id ? (
 		<div className="album-details-container">
 		<h1>{selectedAlbum.album_title}</h1>
 		<img src={selectedAlbum.artwork} />
-		<div className="manage-btns">
+		<div className="track-list"> {Object.values(selectedAlbum.tracks).map((track) => (
+			<div key={track.id}>{track.track_title}</div>
+		))}
 		</div>
 		<form onSubmit={handleSubmit}>
 			<h2>say somethin</h2>

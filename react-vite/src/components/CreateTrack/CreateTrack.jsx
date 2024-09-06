@@ -6,7 +6,7 @@ import { thunkCreateTrack } from '../../redux/tracks';
 const CreateTrack = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const albumId = useParams();
+	const {albumId} = useParams();
 	const [originalFilename, setOriginalFilename] = useState('')
 	const [trackTitle, setTrackTitle] = useState('')
 
