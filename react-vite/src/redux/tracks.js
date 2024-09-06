@@ -8,7 +8,7 @@ const createTrack = (payload) => ({
 export const thunkCreateTrack = (track) => async (dispatch) => {
 	const res = await fetch ('/api/tracks', {
 		method: "POST",
-		body: post
+		body: track
 	})
 
 	if (res.ok) {
@@ -20,6 +20,8 @@ export const thunkCreateTrack = (track) => async (dispatch) => {
 
 		dispatch(createTrack(data))
 		return data
+	} else {
+		// console.log('the error is here')
 	}
 }
 

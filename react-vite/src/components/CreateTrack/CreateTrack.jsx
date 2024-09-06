@@ -9,22 +9,22 @@ const CreateTrack = () => {
 	const [originalFilename, setOriginalFilename] = useState('')
 	const [trackTitle, setTrackTitle] = useState('')
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault()
 
-		const newTrack = {
-			originalFilename,
-			trackTitle
-		}
-		dispatch(thunkCreateTrack(newTrack))
+		const formData = new FormData();
+		formData.append("originalFilename", originalFilename);
+		formData.append("trackTitle", trackTitle);
+		dispatch(thunkCreateTrack(formData))
 	}
+
 	return (
 		<div>
 			<form onSubmit={handleSubmit} encType='multipart/form-data'>
 			<label>your file</label>
 				<input
 					type='file'
-					value={originalFilename}
+					accept='audio/*'
 					onChange={(e) => setOriginalFilename(e.target.files[0])}
 				/>
 				<label>name yr song</label>
@@ -33,6 +33,7 @@ const CreateTrack = () => {
 					value={trackTitle}
 					onChange={(e) => setTrackTitle(e.target.value)}
 				/>
+				<button type='submit'>upload it</button>
 			</form>
 		</div>
 	)

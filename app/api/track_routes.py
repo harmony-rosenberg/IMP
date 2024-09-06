@@ -10,16 +10,23 @@ def get_all_tracks():
 	tracks = Track.query.all()
 	return jsonify([track.to_dict() for track in tracks]), 200
 
-@track_routes.route('')
+@track_routes.route('', methods=['POST'])
 def upload_track():
 
-	original_filename = request.json.get('originalFilename')
-	filename = get_unique_filename(original_filename)
-	track_title = request.json.get('trackTitle')
+	original_filename = request.files['originalFilename']
+	filename = get_unique_filename(original_filename.filename)
+	original_filename.filename = filename
+	track_title = request.form.get('trackTitle')
 
-	new_track = Track(original_filename=original_filename, filename=filename, track_title=track_title)
+	if not original_filename:
+		return jsonify({'error': 'need that file, buddy'})
+	if not track_title:
+		return jsonify({'error': 'name your track plz!'})
 
-	upload_file_to_s3(new_track)
+	upload_file_to_s3(original_filename)
+
+	new_track = Track(original_filename=original_filename.filename, filename=filename, track_title=track_title)
+
 
 	db.session.add(new_track)
 	db.session.commit()

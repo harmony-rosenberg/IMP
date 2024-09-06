@@ -6,6 +6,7 @@ import HomePage from '../components/HomePage';
 import CreateAlbum from '../components/CreateAlbum/CreateAlbum';
 import UpdateAlbum from '../components/UpdateAlbum';
 import AlbumPage from '../components/AlbumPage/AlbumPage';
+import CreateTrack from '../components/CreateTrack/CreateTrack';
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
         path: "/albums/:albumId/edit",
         element: <UpdateAlbum />
       },
+      {
+        path: "/tracks/new",
+        element: <CreateTrack />
+      }
     ],
   },
 ]);
