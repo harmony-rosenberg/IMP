@@ -11,6 +11,9 @@ class Track(db.Model):
 	filename = db.Column(db.String(100), nullable=False)
 	track_title = db.Column(db.String(100), nullable=False)
 
+	album_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('albums.id'), ondelete='CASCADE'), nullable=False)
+	albums = db.relationship('Album', back_populates='tracks')
+
 	def _repr_(self):
 		return f'Album {self.track_title}'
 

@@ -5,17 +5,20 @@ def seed_tracks():
 	demo_track_1 = Track(
 		original_filename="mysong.wav",
 		filename='mysongnewfile.wav',
-		track_title='My Song!'
+		track_title='My Song!',
+		album_id=1,
 	)
 	demo_track_2 = Track(
 		original_filename="mysong.wav",
 		filename='mysongnewfile.wav',
-		track_title='My Song!'
+		track_title='My Song!',
+		album_id=1,
 	)
 	demo_track_3 = Track(
 		original_filename="mysong.wav",
 		filename='mysongnewfile.wav',
-		track_title='My Song!'
+		track_title='My Song!',
+		album_id=1,
 	)
 
 	db.session.add(demo_track_1)
