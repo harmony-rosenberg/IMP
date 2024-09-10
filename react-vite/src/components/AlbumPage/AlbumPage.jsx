@@ -6,7 +6,6 @@ import { thunkGetAlbumDetails } from "../../redux/albums";
 import { thunkCreateComment } from '../../redux/comments';
 import DeleteAlbum from "../DeleteAlbum/DeleteAlbum";
 import './AlbumPage.css';
-import trackReducer from "../../redux/tracks";
 
 const AlbumPage = () => {
 	const dispatch = useDispatch();
@@ -61,6 +60,16 @@ const AlbumPage = () => {
 			<div key={track.id}>{track.track_title}</div>
 		))}
 		</div>
+		<div className="comments-container">
+				{Object.values(selectedAlbum.comments).map((comment) => (
+					<div
+					className="comment"
+					key={comment.id}>
+						<div className="comment-user">{comment.user.artistName} :</div>
+						{comment.body}
+						</div>
+				))}
+			</div>
 		</div>
 		) : isLoaded && selectedAlbum.user_id !== user.id ? (
 		<div className="album-details-container">
