@@ -4,6 +4,6 @@
 }
 
 body {
-	background-color: darkblue;
+	background: linear-gradient(.25turn, #00008b, 50%, blue);
 	color: lime;
 }

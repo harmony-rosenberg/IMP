@@ -3,6 +3,7 @@
   justify-content: space-between;
   /* height: 100px; */
   /* margin-bottom: 50px; */
+  margin-top: 25px;
   margin-right: 50px;
   margin-left: 50px;
 }
@@ -22,4 +23,9 @@
 
 li:hover {
   cursor: pointer;
+}
+
+.logo {
+  height: 100px;
+  width: 100px;
 }
