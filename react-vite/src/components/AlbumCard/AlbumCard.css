@@ -1,6 +1,6 @@
 .card-container > img {
-	height: 400px;
-	width: 400px;
+	height: 250px;
+	width: 250px;
 }
 
 .card-container > img:hover {

@@ -5,6 +5,7 @@ import "./Navigation.css";
 function Navigation() {
   return (
     <div className="nav-bar-main">
+
       <div className="home-logo">
         <NavLink to="/">Home</NavLink>
       </div>
