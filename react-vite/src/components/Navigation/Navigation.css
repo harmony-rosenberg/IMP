@@ -1,11 +1,33 @@
-.profile-dropdown {
-  border: 2px black solid;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-}
-
 .nav-bar-main {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
+
+.profile-dropdown {
+	background-color: lightgray;
+  list-style: none;
+  position: absolute;
+  right: 50px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.home-logo {
+  align-self: flex-start;
+}
+
+li:hover {
+  cursor: pointer;
+}
+
+.logo {
+  height: 75px;
+  width: 75px;
 }

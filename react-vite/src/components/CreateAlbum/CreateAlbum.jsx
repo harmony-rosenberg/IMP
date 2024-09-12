@@ -12,10 +12,26 @@ const CreateAlbum = () => {
 	const [artwork, setArtwork] = useState('');
 	const [releaseDate, setReleaseDate] = useState('00/00/0000');
 	const [genre, setGenre] = useState('')
-	// const [errors, setErrors] = useState('');
+  const [formErrors, setFormErrors] = useState({});
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
+
+		const errors = {}
+
+		if(!albumTitle) {
+			errors.albumTitle = "Needs a title"
+		}
+
+		if(!artwork) {
+			errors.artwork = "Every album needs a pretty picture!"
+		}
+
+		if(Object.keys(errors).length > 0) {
+			setFormErrors(errors)
+			return;
+		}
+		console.log(formErrors)
 
 		const newAlbum = {
 			albumTitle,
@@ -24,12 +40,12 @@ const CreateAlbum = () => {
 			releaseDate,
 			genre
 		}
-		dispatch(thunkCreateAlbum(newAlbum)) //will nav to album details
-		navigate('/')
+			dispatch(thunkCreateAlbum(newAlbum)) //will nav to album details
+			navigate('/')
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<form className='album-form' onSubmit={handleSubmit}>
 			<h2>Create your album</h2>
 			<div>
 				<label>Album Title</label>
@@ -37,8 +53,10 @@ const CreateAlbum = () => {
 				type='text'
 				value={albumTitle}
 				onChange={(e) => setAlbumTitle(e.target.value)}
-				required
 				/>
+				<div className='error-box'>
+			{formErrors.albumTitle && <p>{formErrors.albumTitle}</p>}
+			</div>
 			</div>
 			<div>
 				<label>Release Date</label>
@@ -70,8 +88,10 @@ const CreateAlbum = () => {
 				type='text'
 				value={artwork}
 				onChange={(e) => setArtwork(e.target.value)}
-				required
 				/>
+				<div className='error-box'>
+			{formErrors.artwork && <p>{formErrors.artwork}</p>}
+			</div>
 			</div>
 			<button type='submit'>Submit</button>
 		</form>

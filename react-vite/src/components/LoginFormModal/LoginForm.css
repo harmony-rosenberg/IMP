@@ -1,0 +1,24 @@
+.login-form {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 5px;
+	padding: 10px;
+	background-color: lightgray;
+}
+
+button:disabled:hover {
+	cursor: not-allowed;
+}
+
+.form-btn {
+	font-size: 15px;
+  border: 2px outset;
+  outline: none;
+  cursor: pointer;
+	width: 100%;
+
+	&:active {
+    border: 2px inset;
+  }
+}

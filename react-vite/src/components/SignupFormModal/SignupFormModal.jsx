@@ -46,9 +46,9 @@ function SignupFormModal() {
 
   return (
     <div>
-      <h1>Sign Up</h1>
       {errors.server && <p>{errors.server}</p>}
       <form className="sign-up-form" onSubmit={handleSubmit}>
+      <div className="gradient-top">Sign up for I.M.P.</div>
         <div>
         <label>
           Email
@@ -83,8 +83,10 @@ function SignupFormModal() {
 			</div>
       <div>
 				<label>Biography</label>
-				<input
-				type='text'
+				<textarea
+              rows={8}
+              cols={30}
+				type='textarea'
 				value={bio}
 				onChange={(e) => setBio(e.target.value)}
 				/>
@@ -121,7 +123,9 @@ function SignupFormModal() {
         </label>
         {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
         </div>
-        <button type="submit">Sign Up</button>
+        <button className="form-btn" type="submit"
+        disabled={!email || !password || !username || !artistName || confirmPassword !== password}
+        >Sign Up</button>
       </form>
     </div>
   );

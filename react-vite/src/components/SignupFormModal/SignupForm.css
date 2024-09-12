@@ -1,0 +1,28 @@
+.sign-up-form {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 5px;
+	padding: 10px;
+	background-color: lightgray;
+}
+
+label {
+	color: black;
+}
+
+input {
+	display: flex;
+	width: 200px;
+}
+
+textarea {
+	display: flex;
+}
+
+.gradient-top {
+  background-color: blue;
+	color: white;
+	width: 100%;
+	text-align: center;
+}

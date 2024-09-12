@@ -30,6 +30,10 @@ const AlbumPage = () => {
 		navigate(`/albums/${albumId}/edit`)
 	}
 
+	const openTrackUpload = () => {
+		navigate(`/albums/${albumId}/tracks`)
+	}
+
 	const handleSubmit = (e) => {
 		e.preventDefault()
 
@@ -50,13 +54,30 @@ const AlbumPage = () => {
 			<div className="manage-btns">
 			<button className="delete-btn btn" onClick={openDeleteAlbumModal}>DELETE</button>
 			<button className="update-btn btn" onClick={openUpdateAlbumForm}>UPDATE</button>
+			<button className="upload-btn btn" onClick={openTrackUpload}>TRACKS</button>
+			</div>
+			<div className="track-list"> {Object.values(selectedAlbum.tracks).map((track) => (
+			<div key={track.id}>{track.track_title}</div>
+		))}
+		</div>
+		<div className="comments-container">
+				{Object.values(selectedAlbum.comments).map((comment) => (
+					<div
+					className="comment"
+					key={comment.id}>
+						<div className="comment-user">{comment.user.artistName} :</div>
+						{comment.body}
+						</div>
+				))}
 			</div>
 		</div>
 		) : isLoaded && selectedAlbum.user_id !== user.id ? (
 		<div className="album-details-container">
 		<h1>{selectedAlbum.album_title}</h1>
 		<img src={selectedAlbum.artwork} />
-		<div className="manage-btns">
+		<div className="track-list"> {Object.values(selectedAlbum.tracks).map((track) => (
+			<div key={track.id}>{track.track_title}</div>
+		))}
 		</div>
 		<form onSubmit={handleSubmit}>
 			<h2>say somethin</h2>
