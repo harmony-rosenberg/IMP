@@ -31,7 +31,6 @@ const CreateAlbum = () => {
 			setFormErrors(errors)
 			return;
 		}
-		console.log(formErrors)
 
 		const newAlbum = {
 			albumTitle,
