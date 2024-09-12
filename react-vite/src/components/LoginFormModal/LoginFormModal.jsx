@@ -30,8 +30,8 @@ function LoginFormModal() {
 
   return (
     <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+      <form className='login-form' onSubmit={handleSubmit}>
+      <div className="gradient-top">Log in to I.M.P.</div>
         <label>
           Email
           <input
