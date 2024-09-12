@@ -21,7 +21,6 @@ export const thunkCreateTrack = (track) => async (dispatch) => {
 		dispatch(createTrack(data))
 		return data
 	} else {
-		// console.log('the error is here')
 	}
 }
 

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FaUserCircle } from 'react-icons/fa';
-import { thunkLogout } from "../../redux/session";
+import { thunkLogout, thunkLogin } from "../../redux/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
@@ -12,6 +12,8 @@ import "./Navigation.css";
 function ProfileButton() {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const [email] = useState("demo@aa.io");
+  const [password] = useState("password");
   const user = useSelector((store) => store.session.user);
   const ulRef = useRef();
 
@@ -41,6 +43,16 @@ function ProfileButton() {
     dispatch(thunkLogout());
     closeMenu();
   };
+
+  // const credentials = {
+  //   credential,
+  //   password
+  // }
+
+  const demoLogin = () => {
+    // console.log('TEST ---------->', credential)
+    return dispatch(thunkLogin({ email, password }))
+  }
 
   return (
     <>
@@ -73,6 +85,7 @@ function ProfileButton() {
                 onItemClick={closeMenu}
                 modalComponent={<SignupFormModal />}
               />
+              <button onClick={demoLogin}>Log in as demo user</button>
             </>
           )}
         </ul>
