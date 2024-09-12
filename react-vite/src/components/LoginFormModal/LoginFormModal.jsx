@@ -52,7 +52,9 @@ function LoginFormModal() {
           />
         </label>
         {errors.password && <p>{errors.password}</p>}
-        <button type="submit">Log In</button>
+        <button className="form-btn" type="submit"
+        disabled={!email || !password}
+        >Log In</button>
       </form>
     </>
   );

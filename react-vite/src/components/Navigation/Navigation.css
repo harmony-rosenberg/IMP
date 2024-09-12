@@ -9,9 +9,8 @@
 
 
 .profile-dropdown {
-  box-sizing: border-box;
+	background-color: lightgray;
   list-style: none;
-  background-color: white;
   position: absolute;
   right: 50px;
   padding: 20px;
@@ -32,4 +31,3 @@ li:hover {
   height: 75px;
   width: 75px;
 }
-

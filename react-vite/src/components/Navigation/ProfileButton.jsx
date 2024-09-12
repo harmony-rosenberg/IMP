@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { NavLink, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FaUserCircle } from 'react-icons/fa';
 import { thunkLogout } from "../../redux/session";
@@ -53,6 +54,9 @@ function ProfileButton() {
               <li>{user.artistName}</li>
               <li>Your Profile</li>
               <li>Your Releases</li>
+              <li>
+                <NavLink to={'/albums/new'}> create an album </NavLink>
+                </li>
               <li>
                 <button onClick={logout}>Log Out</button>
               </li>
