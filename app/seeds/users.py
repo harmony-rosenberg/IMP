@@ -9,7 +9,7 @@ def seed_users():
         email='demo@aa.io',
         password='password',
         bio='hey this is a test bio',
-        artist_name='The Shit Kickers',
+        artist_name='Demo',
         profile_picture='https://www.shutterstock.com/image-photo/cute-grey-british-shorthair-cat-600nw-2258972347.jpg'
         )
     demo_one = User(
