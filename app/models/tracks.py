@@ -7,7 +7,7 @@ class Track(db.Model):
 		__table_args__ = {'schema': SCHEMA}
 
 	id = db.Column(db.Integer, primary_key=True)
-	original_filename = db.Column(db.Integer, nullable=False)
+	original_filename = db.Column(db.String, nullable=False)
 	filename = db.Column(db.String(100), nullable=False)
 	track_title = db.Column(db.String(100), nullable=False)
 
