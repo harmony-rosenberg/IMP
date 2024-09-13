@@ -36,7 +36,7 @@ const CreateAlbum = () => {
 			albumTitle,
 			credits,
 			artwork,
-			releaseDate,
+			// releaseDate,
 			genre
 		}
 			dispatch(thunkCreateAlbum(newAlbum)) //will nav to album details
@@ -52,19 +52,20 @@ const CreateAlbum = () => {
 				type='text'
 				value={albumTitle}
 				onChange={(e) => setAlbumTitle(e.target.value)}
+				required
 				/>
 				<div className='error-box'>
 			{formErrors.albumTitle && <p>{formErrors.albumTitle}</p>}
 			</div>
 			</div>
-			<div>
+			{/* <div>
 				<label>Release Date</label>
 				<input
 				type='text'
 				value={releaseDate}
 				onChange={(e) => setReleaseDate(e.target.value)}
 				/>
-			</div>
+			</div> */}
 			<div>
 				<label>Genre</label>
 				<input
@@ -87,6 +88,7 @@ const CreateAlbum = () => {
 				type='text'
 				value={artwork}
 				onChange={(e) => setArtwork(e.target.value)}
+				required
 				/>
 				<div className='error-box'>
 			{formErrors.artwork && <p>{formErrors.artwork}</p>}
