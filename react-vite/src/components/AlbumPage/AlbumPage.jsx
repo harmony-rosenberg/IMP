@@ -14,13 +14,14 @@ const AlbumPage = () => {
 	const {albumId} = useParams();
 	const [body, setBody] = useState('');
 	const albums = useSelector(state => state.albums)
+	const comments = useSelector(state => state.comments)
 	const [isLoaded, setIsLoaded] = useState(false);
 	const selectedAlbum = Object.values(albums)[0]
   const user = useSelector(state => state.session.user)
 
 	useEffect(() => {
 		dispatch(thunkGetAlbumDetails(albumId)).then(() => setIsLoaded(true))
-	}, [albumId, dispatch])
+	}, [albumId, comments, dispatch])
 
 	const openDeleteAlbumModal = () => {
 		setModalContent(<DeleteAlbum album={selectedAlbum}/>)
@@ -42,6 +43,7 @@ const AlbumPage = () => {
 			album_id: albumId
 		}
 		dispatch(thunkCreateComment(newComment))
+		setBody("")
 		navigate(`/albums/${albumId}`)
 	}
 
