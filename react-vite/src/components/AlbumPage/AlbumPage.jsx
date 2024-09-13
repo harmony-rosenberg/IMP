@@ -21,7 +21,7 @@ const AlbumPage = () => {
 
 	useEffect(() => {
 		dispatch(thunkGetAlbumDetails(albumId)).then(() => setIsLoaded(true))
-	}, [albumId, comments, dispatch])
+	}, [albumId, comments, dispatch, user])
 
 	const openDeleteAlbumModal = () => {
 		setModalContent(<DeleteAlbum album={selectedAlbum}/>)
@@ -48,9 +48,8 @@ const AlbumPage = () => {
 	}
 
 	return (
-		isLoaded && user ? (
-			isLoaded && user.id == selectedAlbum.user_id ?
-			(
+		isLoaded ? (
+			user && user.id == selectedAlbum.user_id ? (
 			<div className="album-details-container">
 				<h1>{selectedAlbum.album_title}</h1>
 				<img src={selectedAlbum.artwork} />
@@ -74,7 +73,7 @@ const AlbumPage = () => {
 					))}
 				</div>
 			</div>
-			) : isLoaded && selectedAlbum.user_id !== user.id ? (
+			) : user && selectedAlbum.user_id !== user.id ? (
 			<div className="album-details-container">
 			<h1>{selectedAlbum.album_title}</h1>
 			<img src={selectedAlbum.artwork} />
@@ -107,9 +106,8 @@ const AlbumPage = () => {
 				</div>
 			</div>
 			) :
-				<h1>loading....</h1>
-		) : (
 			<div className="album-details-container">
+				<h1>NOT LOGGED IN</h1>
 				<h1>{selectedAlbum.album_title}</h1>
 				<img src={selectedAlbum.artwork} />
 				<div className="track-list"> {Object.values(selectedAlbum.tracks).map((track) => (
@@ -127,7 +125,8 @@ const AlbumPage = () => {
 					))}
 				</div>
 			</div>
-		)
+		) :
+			<h1>loading....</h1>
 	)
 }
 
