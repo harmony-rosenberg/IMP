@@ -8,6 +8,7 @@ import DeleteAlbum from "../DeleteAlbum/DeleteAlbum";
 import './AlbumPage.css';
 import UpdateComment from "../UpdateComment";
 import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
+import DeleteComment from "../DeleteComment/DeleteComment";
 
 
 const AlbumPage = () => {
@@ -37,10 +38,6 @@ const AlbumPage = () => {
 	const openTrackUpload = () => {
 		navigate(`/albums/${albumId}/tracks`)
 	}
-
-	// const openEditCommentModal = () => {
-	// 	setModalContent(<UpdateComment />)
-	// }
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
@@ -113,7 +110,10 @@ const AlbumPage = () => {
 							itemText='edit'
 							modalComponent={<UpdateComment comment={comment} />}
 							/>
-							<button>delete</button>
+							<OpenModalMenuItem
+							itemText='delete'
+							modalComponent={<DeleteComment comment={comment} />}
+							/>
 							</div>
 						) : (
 							<div
