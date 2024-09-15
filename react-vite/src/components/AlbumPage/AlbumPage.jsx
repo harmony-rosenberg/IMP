@@ -6,6 +6,9 @@ import { thunkGetAlbumDetails } from "../../redux/albums";
 import { thunkCreateComment } from '../../redux/comments';
 import DeleteAlbum from "../DeleteAlbum/DeleteAlbum";
 import './AlbumPage.css';
+import UpdateComment from "../UpdateComment";
+import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
+
 
 const AlbumPage = () => {
 	const dispatch = useDispatch();
@@ -34,6 +37,10 @@ const AlbumPage = () => {
 	const openTrackUpload = () => {
 		navigate(`/albums/${albumId}/tracks`)
 	}
+
+	// const openEditCommentModal = () => {
+	// 	setModalContent(<UpdateComment />)
+	// }
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
@@ -96,18 +103,31 @@ const AlbumPage = () => {
 				</form>
 				<div className="comments-container">
 					{Object.values(selectedAlbum.comments).map((comment) => (
+						comment.user_id == user.id ? (
 						<div
 						className="comment"
 						key={comment.id}>
 							<div className="comment-user">{comment.user.artistName} :</div>
 							{comment.body}
+							<OpenModalMenuItem
+							itemText='edit'
+							modalComponent={<UpdateComment comment={comment} />}
+							/>
+							<button>delete</button>
 							</div>
+						) : (
+							<div
+							className="comment"
+							key={comment.id}>
+								<div className="comment-user">{comment.user.artistName} :</div>
+								{comment.body}
+								</div>
+						)
 					))}
 				</div>
 			</div>
-			) : 
+			) :
 			<div className="album-details-container">
-				<h1>NOT LOGGED IN</h1>
 				<h1>{selectedAlbum.album_title}</h1>
 				<img src={selectedAlbum.artwork} />
 				<div className="track-list"> {Object.values(selectedAlbum.tracks).map((track) => (
