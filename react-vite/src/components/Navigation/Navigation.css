@@ -23,6 +23,10 @@
   align-self: flex-start;
 }
 
+li {
+  list-style: none;
+}
+
 li:hover {
   cursor: pointer;
 }
