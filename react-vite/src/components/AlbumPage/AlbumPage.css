@@ -26,9 +26,11 @@ textarea {
 }
 
 .comment {
-	list-style: none;
-	border: 5px black solid;
-	width: fit-content;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	border: 2px black solid;
+	width: 500px;
 	padding: 10px;
 	margin-top: 10px;
 }
@@ -37,4 +39,8 @@ textarea {
 	font-size: 25px;
 	font-weight: bold;
 	padding-bottom: 10px;
+}
+
+.comment button {
+	width: fit-content;
 }

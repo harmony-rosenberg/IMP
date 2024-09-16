@@ -111,7 +111,10 @@ const commentReducer = (state = initialState, action) => {
 			return {...state, ...newState}
 		}
 		case DELETE_COMMENT: {
-			return Object.values(state).filter(comment => comment.id !== action.comment.id)
+			// return Object.values(state).filter(comment => comment.id !== action.comment.id)
+			const newState = {...state};
+			delete newState[action.payload.id]
+			return newState
 		}
 		default:
 			return state

@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 5807219cbbe4
+Revision ID: 3afcc1c29b15
 Revises: 
-Create Date: 2024-09-12 21:32:37.561021
+Create Date: 2024-09-13 18:04:50.434616
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '5807219cbbe4'
+revision = '3afcc1c29b15'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -43,7 +43,7 @@ def upgrade():
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('body', sa.String(length=400), nullable=False),
-    sa.Column('album_id', sa.Integer(), nullable=False),
+    sa.Column('album_id', sa.Integer(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['album_id'], ['albums.id'], ondelete='CASCADE'),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ondelete='CASCADE'),
@@ -54,7 +54,7 @@ def upgrade():
     sa.Column('original_filename', sa.String(), nullable=False),
     sa.Column('filename', sa.String(length=100), nullable=False),
     sa.Column('track_title', sa.String(length=100), nullable=False),
-    sa.Column('album_id', sa.Integer(), nullable=False),
+    sa.Column('album_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['album_id'], ['albums.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )

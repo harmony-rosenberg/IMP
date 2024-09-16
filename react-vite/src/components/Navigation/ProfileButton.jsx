@@ -64,8 +64,8 @@ function ProfileButton() {
           {user ? (
             <>
               <li>{user.artistName}</li>
-              <li>Your Profile</li>
-              <li>Your Releases</li>
+              {/* <li>Your Profile</li> coming soon*/}
+              {/* <li>Your Releases</li> coming soon*/}
               <li>
                 <NavLink to={'/albums/new'}> create an album </NavLink>
                 </li>

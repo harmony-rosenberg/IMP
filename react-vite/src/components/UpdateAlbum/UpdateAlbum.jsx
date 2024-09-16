@@ -8,16 +8,18 @@ const UpdateAlbum = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const {albumId} = useParams();
-	const album = useSelector(state => state.albums)
-	const [albumTitle, setAlbumTitle] = useState('');
-	const [credits, setCredits] = useState('');
-	const [artwork, setArtwork] = useState('');
-	const [releaseDate, setReleaseDate] = useState('00/00/0000');
-	const [genre, setGenre] = useState('')
+	const albums = useSelector(state => state.albums)
+	const album = Object.values(albums)[0]
+	const [albumTitle, setAlbumTitle] = useState("");
+	const [credits, setCredits] = useState("");
+	const [artwork, setArtwork] = useState("");
+	// const [releaseDate, setReleaseDate] = useState('00/00/0000');
+	const [genre, setGenre] = useState("")
+	const [isLoaded, setIsLoaded] = useState(false);
 	// const [errors, setErrors] = useState('');
 
 	useEffect(() => {
-		dispatch(thunkGetAlbumDetails(albumId))
+		dispatch(thunkGetAlbumDetails(albumId)).then(() => setIsLoaded(true))
 	}, [albumId, dispatch])
 
 	const handleSubmit = async (e) => {
@@ -25,10 +27,10 @@ const UpdateAlbum = () => {
 
 		const payload = {
 			id: albumId,
-			albumTitle: albumTitle || album.albumTitle,
+			albumTitle: albumTitle || album.album_title,
 			credits: credits || album.credits,
 			artwork: artwork || album.artwork,
-			releaseDate: releaseDate || album.releaseDate,
+			// releaseDate: releaseDate || album.releaseDate,
 			genre: genre || album.genre
 		}
 		const updatedAlbum = dispatch(thunkUpdateAlbum(payload))
@@ -37,28 +39,31 @@ const UpdateAlbum = () => {
 	}
 
 	return (
+		isLoaded ? (
 		<form onSubmit={handleSubmit}>
 			<h2>update yr info</h2>
 			<div>
 				<label>Album Title</label>
 				<input
 				type='text'
+				placeholder={album.album_title}
 				value={albumTitle}
 				onChange={(e) => setAlbumTitle(e.target.value)}
 				/>
 			</div>
-			<div>
+			{/* <div>
 				<label>Release Date</label>
 				<input
 				type='text'
 				value={releaseDate}
 				onChange={(e) => setReleaseDate(e.target.value)}
 				/>
-			</div>
+			</div> */}
 			<div>
 				<label>Genre</label>
 				<input
 				type='text'
+				placeholder={album.genre}
 				value={genre}
 				onChange={(e) => setGenre(e.target.value)}
 				/>
@@ -67,6 +72,7 @@ const UpdateAlbum = () => {
 				<label>Credits</label>
 				<input
 				type='text'
+				placeholder={album.credits}
 				value={credits}
 				onChange={(e) => setCredits(e.target.value)}
 				/>
@@ -75,12 +81,16 @@ const UpdateAlbum = () => {
 				<label>Artwork</label>
 				<input
 				type='text'
+				placeholder={album.artwork}
 				value={artwork}
 				onChange={(e) => setArtwork(e.target.value)}
 				/>
 			</div>
 			<button type='submit'>Update</button>
 		</form>
+		) : (
+			<h1>loading...</h1>
+		)
 	)
 }
 
