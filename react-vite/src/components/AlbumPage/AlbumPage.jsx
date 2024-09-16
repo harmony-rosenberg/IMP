@@ -68,12 +68,29 @@ const AlbumPage = () => {
 			</div>
 			<div className="comments-container">
 					{Object.values(selectedAlbum.comments).map((comment) => (
+						comment.user_id == user.id ? (
 						<div
 						className="comment"
 						key={comment.id}>
 							<div className="comment-user">{comment.user.artistName} :</div>
 							{comment.body}
+							<OpenModalMenuItem
+							itemText='edit'
+							modalComponent={<UpdateComment comment={comment} />}
+							/>
+							<OpenModalMenuItem
+							itemText='delete'
+							modalComponent={<DeleteComment comment={comment} />}
+							/>
 							</div>
+						) : (
+							<div
+							className="comment"
+							key={comment.id}>
+								<div className="comment-user">{comment.user.artistName} :</div>
+								{comment.body}
+								</div>
+						)
 					))}
 				</div>
 			</div>
