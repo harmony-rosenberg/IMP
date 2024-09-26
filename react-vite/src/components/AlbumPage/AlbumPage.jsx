@@ -9,6 +9,7 @@ import './AlbumPage.css';
 import UpdateComment from "../UpdateComment";
 import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
 import DeleteComment from "../DeleteComment/DeleteComment";
+import CreateComment from "../CreateComment/CreateComment";
 
 
 const AlbumPage = () => {
@@ -102,19 +103,7 @@ const AlbumPage = () => {
 				<div key={track.id}>{track.track_title}</div>
 			))}
 			</div>
-			<form onSubmit={handleSubmit}>
-				<h2>say somethin</h2>
-			<div>
-				<textarea
-				rows={8}
-				cols={80}
-				value={body}
-				onChange={(e) => setBody(e.target.value)}
-				required
-				/>
-			</div>
-			<button type='submit'>post!</button>
-				</form>
+				<CreateComment album={selectedAlbum} />
 				<div className="comments-container">
 					{Object.values(selectedAlbum.comments).map((comment) => (
 						comment.user_id == user.id ? (
