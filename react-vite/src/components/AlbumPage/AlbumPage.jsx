@@ -10,6 +10,7 @@ import UpdateComment from "../UpdateComment";
 import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
 import DeleteComment from "../DeleteComment/DeleteComment";
 import CreateComment from "../CreateComment/CreateComment";
+import CommentCard from "../CommentCard/CommentCard";
 
 
 const AlbumPage = () => {
@@ -67,33 +68,7 @@ const AlbumPage = () => {
 				<div key={track.id}>{track.track_title}</div>
 			))}
 			</div>
-			<div className="comments-container">
-					{Object.values(selectedAlbum.comments).map((comment) => (
-						comment.user_id == user.id ? (
-						<div
-						className="comment"
-						key={comment.id}>
-							<div className="comment-user">{comment.user.artistName} :</div>
-							{comment.body}
-							<OpenModalMenuItem
-							itemText='edit'
-							modalComponent={<UpdateComment comment={comment} />}
-							/>
-							<OpenModalMenuItem
-							itemText='delete'
-							modalComponent={<DeleteComment comment={comment} />}
-							/>
-							</div>
-						) : (
-							<div
-							className="comment"
-							key={comment.id}>
-								<div className="comment-user">{comment.user.artistName} :</div>
-								{comment.body}
-								</div>
-						)
-					))}
-				</div>
+				<CommentCard album={selectedAlbum}/>
 			</div>
 			) : user && selectedAlbum.user_id !== user.id ? (
 			<div className="album-details-container">
@@ -104,33 +79,7 @@ const AlbumPage = () => {
 			))}
 			</div>
 				<CreateComment album={selectedAlbum} />
-				<div className="comments-container">
-					{Object.values(selectedAlbum.comments).map((comment) => (
-						comment.user_id == user.id ? (
-						<div
-						className="comment"
-						key={comment.id}>
-							<div className="comment-user">{comment.user.artistName} :</div>
-							{comment.body}
-							<OpenModalMenuItem
-							itemText='edit'
-							modalComponent={<UpdateComment comment={comment} />}
-							/>
-							<OpenModalMenuItem
-							itemText='delete'
-							modalComponent={<DeleteComment comment={comment} />}
-							/>
-							</div>
-						) : (
-							<div
-							className="comment"
-							key={comment.id}>
-								<div className="comment-user">{comment.user.artistName} :</div>
-								{comment.body}
-								</div>
-						)
-					))}
-				</div>
+				<CommentCard album={selectedAlbum}/>
 			</div>
 			) :
 			<div className="album-details-container">
