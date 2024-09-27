@@ -7,3 +7,13 @@ body {
 	/* background: linear-gradient(.25turn, #00008b, 50%, blue); */
 	background-color: rgb(000, 128, 128);
 }
+
+button {
+	background-color: #c0c0c0;
+	border: 2px outset;
+  outline: none;
+
+	&:active {
+		border: 2px inset;
+	}
+}

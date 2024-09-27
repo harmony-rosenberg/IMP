@@ -31,9 +31,9 @@ const AlbumDetails = ({album}) => {
 				<h1>{album.album_title}</h1>
 				<img src={album.artwork} />
 				<div className="manage-btns">
-				<button className="delete-btn btn" onClick={openDeleteAlbumModal}>DELETE</button>
-				<button className="update-btn btn" onClick={openUpdateAlbumForm}>UPDATE</button>
-				<button className="upload-btn btn" onClick={openTrackUpload}>TRACKS</button>
+				<button onClick={openDeleteAlbumModal}>Delete</button>
+				<button onClick={openUpdateAlbumForm}>Update</button>
+				<button onClick={openTrackUpload}>Tracks</button>
 				</div>
 				<div className="track-list"> {Object.values(album.tracks).map((track) => (
 				<div key={track.id}>{track.track_title}</div>
