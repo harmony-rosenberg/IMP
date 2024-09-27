@@ -7,7 +7,7 @@ import DeleteComment from "../DeleteComment/DeleteComment";
 const CommentCard = ({album}) => {
 	const user = useSelector(state => state.session.user)
 	const comments = album.comments
-	
+
 	return (
 		<div className="comments-container">
 		{Object.values(comments).map((comment) => (
@@ -17,6 +17,7 @@ const CommentCard = ({album}) => {
 			key={comment.id}>
 				<div className="comment-user">{comment.user.artistName} :</div>
 				{comment.body}
+				<div className='manage-comment-btns'>
 				<OpenModalMenuItem
 				itemText='edit'
 				modalComponent={<UpdateComment comment={comment} />}
@@ -25,6 +26,7 @@ const CommentCard = ({album}) => {
 				itemText='delete'
 				modalComponent={<DeleteComment comment={comment} />}
 				/>
+				</div>
 				</div>
 			) : (
 				<div
