@@ -6,6 +6,8 @@
 body {
 	/* background: linear-gradient(.25turn, #00008b, 50%, blue); */
 	background-color: rgb(000, 128, 128);
+	margin-left: 25px;
+  margin-right: 25px;
 }
 
 button {
