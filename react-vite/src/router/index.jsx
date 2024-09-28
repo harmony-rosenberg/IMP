@@ -26,7 +26,7 @@ export const router = createBrowserRouter([
         element: <SignupFormPage />,
       },
       {
-        path: "profile/:userId",
+        path: "profiles/:userId",
         element: <ProfilePage />
       },
       {

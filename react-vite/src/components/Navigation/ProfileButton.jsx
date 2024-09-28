@@ -50,7 +50,6 @@ function ProfileButton() {
   // }
 
   const demoLogin = () => {
-    // console.log('TEST ---------->', credential)
     return dispatch(thunkLogin({ email, password }))
   }
 
@@ -64,10 +63,11 @@ function ProfileButton() {
           {user ? (
             <>
               <li>{user.artistName}</li>
-              {/* <li>Your Profile</li> coming soon*/}
-              {/* <li>Your Releases</li> coming soon*/}
               <li>
-                <NavLink to={'/albums/new'}> create an album </NavLink>
+                <NavLink to={'/profiles/:userId'} onClick={() => closeMenu()}>yr profile</NavLink>
+                </li>
+              <li>
+                <NavLink to={'/albums/new'} onClick={() => closeMenu()}> create an album </NavLink>
                 </li>
               <li>
                 <button onClick={logout}>Log Out</button>
