@@ -7,7 +7,6 @@
   margin-left: 50px;
 }
 
-
 .profile-dropdown {
 	background-color: lightgray;
   list-style: none;
@@ -21,6 +20,12 @@
 
 .home-logo {
   align-self: flex-start;
+  display: flex;
+}
+
+.home-logo > p {
+  font-size: 25px;
+  font-weight: bold;
 }
 
 li {

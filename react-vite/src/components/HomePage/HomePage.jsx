@@ -14,7 +14,7 @@ const HomePage = () => {
 
 	return (
 		<div className='home-page'>
-			<h1>I.M.P.</h1>
+			<h1>check these out</h1>
 			<div className='album-list'>{Object.values(albums).map((album) => (
 				<AlbumCard key={album.id} album={album}/>
 			))}</div>

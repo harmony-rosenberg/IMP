@@ -10,7 +10,9 @@ function Navigation() {
       <Link to='/'>
           <img className='logo' src="../logo.png" alt="Logo" />
         </Link>
+      <p>I.M.P.</p>
       </div>
+
 
       <div className="profile-btn">
         <ProfileButton />
