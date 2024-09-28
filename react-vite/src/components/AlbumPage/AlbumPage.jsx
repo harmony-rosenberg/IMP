@@ -20,7 +20,9 @@ const AlbumPage = () => {
 
 	return (
 		isLoaded ? (
-			<AlbumDetails album={selectedAlbum}/>
+			<div className="album-page-body">
+				<AlbumDetails album={selectedAlbum}/>
+			</div>
 			) :
 			<h1>loading....</h1>
 	)

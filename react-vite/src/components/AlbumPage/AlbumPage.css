@@ -1,33 +1,6 @@
-.album-details-container > img {
-	height: 300px;
-	width: 300px;
+.album-page-body {
+	border: red 1px solid;
+	display: grid;
 }
 
-.manage-btns {
-	display: flex;
-	gap: 10px;
-}
 
-textarea {
-	resize: none
-}
-
-.comment {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	border: 2px black solid;
-	width: 500px;
-	padding: 10px;
-	margin-top: 10px;
-}
-
-.comment-user {
-	font-size: 25px;
-	font-weight: bold;
-	padding-bottom: 10px;
-}
-
-.comment button {
-	width: fit-content;
-}

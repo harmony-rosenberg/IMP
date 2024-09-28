@@ -27,6 +27,7 @@ const AlbumDetails = ({album}) => {
 
 	return (
 		user && user.id == album.user_id ? (
+			<>
 			<div className="album-details-container">
 				<h1>{album.album_title}</h1>
 				<img src={album.artwork} />
@@ -35,12 +36,13 @@ const AlbumDetails = ({album}) => {
 				<button onClick={openUpdateAlbumForm}>Update</button>
 				<button onClick={openTrackUpload}>Tracks</button>
 				</div>
+			</div>
 				<div className="track-list"> {Object.values(album.tracks).map((track) => (
 				<div key={track.id}>{track.track_title}</div>
 			))}
 			</div>
-				<CommentCard album={album}/>
-			</div>
+			<CommentCard album={album}/>
+			</>
 			) :
 			<div className="album-details-container">
 			<h1>{album.album_title}</h1>

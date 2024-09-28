@@ -1,0 +1,10 @@
+.album-details-container > img {
+	height: 300px;
+	width: 300px;
+}
+
+.manage-btns {
+	display: flex;
+	gap: 10px;
+}
+

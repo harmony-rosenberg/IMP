@@ -15,7 +15,7 @@ const CommentCard = ({album}) => {
 			<div
 			className="comment"
 			key={comment.id}>
-				<div className="comment-user">{comment.user.artistName} :</div>
+				<div className="comment-user">{comment.user.artistName}:</div>
 				{comment.body}
 				<div className='manage-comment-btns'>
 				<OpenModalMenuItem
